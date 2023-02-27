@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <title>Console</title>
+    <script>
+        function deleteDatabase() {
+            return fetch('https://localhost:8080/database/delete', {
+                mode: 'cors',
+                method: 'DELETE'
+            }).then(response => response.json())
+
+
+            alert("Did it work?");
+        }
+    </script>
+    <style>
+        .console {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+            }
+
+        .console-item {
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 5px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .console-frame {
+            width: 100%;
+            height: 70%;
+            border: 2px solid black;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+
+    </style>
+    <body>
+        <div class="console">
+            <div class="console-item">
+                <a href="http://localhost:8080/mongo/read" target="display-frame">Aus MongoDB lesen</a>
+            </div>
+            <div class="console-item">
+                <a href="http://localhost:8080/database/read" target="display-frame">Aus Event Store lesen</a>
+            </div>
+            <div class="console-item">
+                <a href="http://localhost:8080/materializer/read" target="display-frame">Aus Materialized View lesen</a>
+            </div>
+
+            <div class="console-item">
+                <a href="http://localhost:8080/kafka/processLatency" target="display-frame">Prozess-Latenz Kafka</a>
+            </div>
+            <div class="console-item">
+                <a href="http://localhost:8080/kinesis/processLatency" target="display-frame">Prozess-Latenz Kinesis</a>
+            </div>
+            <div class="console-item">
+                <a href="http://localhost:8080/mongo/processLatency" target="display-frame">Prozess-Latenz Change Streams</a>
+            </div>
+
+            <div class="console-item">
+                <a href="http://localhost:8080/mongo/stream" target="display-frame">Change Stream abonnieren</a>
+            </div>
+            <div class="console-item">
+                <a href="http://localhost:8080/materializer/materialize" target="display-frame">Materialisierung starten</a>
+            </div>
+            <div class="console-item">
+
+            </div>
+        </div>
+
+        <iframe name="display-frame" class="console-frame"></iframe>
+
+    </body>
+</html>
